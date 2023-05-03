@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
-import logo from "public/logo.jpg";
+import logo from "src/images/logo.jpg";
 // navbar component with links
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
