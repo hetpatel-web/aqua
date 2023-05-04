@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
-import logo from "../../public/images/logo.jpg";
+
 // navbar component with links
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
           <Link href="/">
             <Image
-              src={logo}
+              src="/images/logo.jpg"
               alt="logo"
               width={100}
               height={100}
