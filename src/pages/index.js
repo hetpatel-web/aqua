@@ -1,9 +1,9 @@
 import Head from "next/head";
-
 import { Inter } from "next/font/google";
 import Navbar from "../components/Navbar";
-
-const inter = Inter({ subsets: ["latin"] });
+import HeroSection from "@/components/HeroSection";
+import ServiceOptions from "@/components/ServiceOptions";
+import AboutUS from "@/components/AboutUS";
 
 export default function Home() {
   return (
@@ -19,8 +19,9 @@ export default function Home() {
       </Head>
       <Navbar />
       <main>
-        <h1 className="text-3xl font-bold">Aqua Consultancy Services</h1>
-        <p>Your way to a new career as a Quality Assurance Professional</p>
+        <HeroSection />
+        <ServiceOptions />
+        <AboutUS />
       </main>
     </>
   );
