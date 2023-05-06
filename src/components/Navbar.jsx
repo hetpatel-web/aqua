@@ -2,17 +2,32 @@ import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-// navbar component with links
+const pages = [
+  { title: "Home", href: "/" },
+  { title: "About", href: "/about" },
+  { title: "Job Openings", href: "/job-openings" },
+  { title: "Services", href: "/services" },
+  { title: "Contact", href: "/contact" },
+];
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+  const currentPath = router.pathname;
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const handleCloseNav = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <>
-      <nav className="fixed w-full h-20 shadow bg-white">
+      <nav className="w-full h-20 shadow bg-white">
         <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
           <Link href="/">
             <Image
@@ -25,29 +40,18 @@ const Navbar = () => {
           </Link>
           <div className="hidden sm:flex">
             <ul className="flex">
-              <Link href="/">
-                <li className="ml-10 uppercase hover:border-b-4 text-xl">
-                  Home
-                </li>
-              </Link>
-
-              <Link href="/about">
-                <li className="ml-10 uppercase hover:border-b-4 text-xl">
-                  About
-                </li>
-              </Link>
-
-              <Link href="/services">
-                <li className="ml-10 uppercase hover:border-b-4 text-xl">
-                  Services
-                </li>
-              </Link>
-
-              <Link href="/contact">
-                <li className="mx-10 uppercase hover:border-b-4 text-xl">
-                  Contact
-                </li>
-              </Link>
+              {pages.map(({ title, href }) => (
+                <Link key={href} href={href}>
+                  <li
+                    className={`ml-10 uppercase hover:border-b-4 text-xl cursor-pointer ${
+                      href === currentPath ? "border-b-4 font-bold" : ""
+                    }`}
+                    onClick={handleCloseNav}
+                  >
+                    {title}
+                  </li>
+                </Link>
+              ))}
             </ul>
           </div>
           <div onClick={handleNav} className="sm:hidden cursor-pointer pl-24">
@@ -65,38 +69,16 @@ const Navbar = () => {
             </div>
             <div className="flex-col py-4">
               <ul>
-                <Link href="/">
-                  <li
-                    onClick={() => setMenuOpen(false)}
-                    className="py-4 cursor-pointer"
-                  >
-                    Home
-                  </li>
-                </Link>
-                <Link href="/about">
-                  <li
-                    onClick={() => setMenuOpen(false)}
-                    className="py-4 cursor-pointer"
-                  >
-                    About
-                  </li>
-                </Link>
-                <Link href="/services">
-                  <li
-                    onClick={() => setMenuOpen(false)}
-                    className="py-4 cursor-pointer"
-                  >
-                    Services
-                  </li>
-                </Link>
-                <Link href="/contact">
-                  <li
-                    onClick={() => setMenuOpen(false)}
-                    className="py-4 cursor-pointer"
-                  >
-                    Contact
-                  </li>
-                </Link>
+                {pages.map(({ title, href }) => (
+                  <Link key={href} href={href}>
+                    <li
+                      className="py-4 cursor-pointer"
+                      onClick={handleCloseNav}
+                    >
+                      {title}
+                    </li>
+                  </Link>
+                ))}
               </ul>
             </div>
           </div>
