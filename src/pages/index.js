@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Navbar from "../components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServiceOptions from "@/components/ServiceOptions";
-import AboutUS from "@/components/AboutUS";
+import AboutUS from "@/components/AboutUS/AboutUS";
 
 export default function Home() {
   return (

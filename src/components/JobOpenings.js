@@ -18,14 +18,19 @@ const JobOpenings = () => {
 
       <div className="container mx-auto py-8">
         <h1 className="text-3xl font-bold mb-8">Job Openings</h1>
-        <ul>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {jobs.map((job) => (
-            <li key={job.id} className="mb-4">
-              <h2 className="text-xl font-bold">{job.title}</h2>
-              <p className="text-gray-600">{job.description}</p>
-            </li>
+            <div key={job.id} className="border border-gray-300 rounded-lg p-4">
+              <h2 className="text-lg font-semibold mb-2">{job.title}</h2>
+              <p className="text-gray-600 mb-4">{job.description}</p>
+              <p className="text-gray-600">Location: {job.location}</p>
+              <p className="text-gray-600">Salary: {job.salary}</p>
+              <a href={job.applyUrl} className="text-blue-500 font-semibold">
+                Apply now
+              </a>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </>
   );
